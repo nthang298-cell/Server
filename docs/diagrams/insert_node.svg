@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <style>
+	.box { fill:#fff;stroke:#333;stroke-width:2; }
+	.rounded { rx:12; ry:12 }
+	.text { font:16px sans-serif; fill:#111 }
+	.arrow { stroke:#333; stroke-width:2; fill:none; marker-end:url(#arrowhead); }
+	.diamond { fill:#fff;stroke:#333;stroke-width:2 }
+  </style>
+  <defs>
+	<marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+	  <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+	</marker>
+  </defs>
+
+  <!-- Start -->
+  <rect x="330" y="20" width="240" height="50" class="box rounded" />
+  <text x="450" y="52" text-anchor="middle" class="text">Bắt đầu</text>
+
+  <!-- tail == NULL? -->
+  <rect x="240" y="110" width="420" height="60" class="box" />
+  <text x="450" y="150" text-anchor="middle" class="text">tail = NULL ?</text>
+  <path class="arrow" d="M450 70 L450 110" />
+
+  <!-- Input ID (parallelogram) -->
+  <polygon points="150,220 300,220 260,270 110,270" class="box" />
+  <text x="230" y="250" class="text">Nhập ID</text>
+  <path class="arrow" d="M450 170 L230 220" />
+
+  <!-- Decision ID <= 0? -->
+  <polygon points="520,220 620,270 520,320 420,270" class="diamond" />
+  <text x="520" y="270" class="text">ID &lt;= 0 ?</text>
+  <path class="arrow" d="M300 245 L420 270" />
+
+  <!-- If true -> End -->
+  <rect x="680" y="240" width="140" height="60" class="box rounded" />
+  <text x="750" y="275" text-anchor="middle" class="text">Kết thúc</text>
+  <path class="arrow" d="M620 270 L680 270" />
+  <text x="650" y="240" class="text">Đúng</text>
+
+  <!-- If false -> Input name -->
+  <polygon points="360,360 560,360 520,410 320,410" class="box" />
+  <text x="440" y="395" class="text">Nhập Tên, Phòng, HSL...</text>
+  <path class="arrow" d="M520 320 L440 360" />
+  <text x="520" y="310" class="text">Sai</text>
+
+  <!-- newNode = createNode(data) -->
+  <rect x="300" y="440" width="320" height="60" class="box" />
+  <text x="460" y="480" text-anchor="middle" class="text">newNode = createNode(data)</text>
+  <path class="arrow" d="M440 420 L460 440" />
+
+  <!-- tail == NULL ? decision -->
+  <polygon points="420,540 520,590 420,640 320,590" class="diamond" />
+  <text x="420" y="590" class="text">tail == NULL ?</text>
+  <path class="arrow" d="M460 500 L420 540" />
+
+  <!-- True branch -->
+  <rect x="80" y="680" width="260" height="80" class="box" />
+  <text x="210" y="720" text-anchor="middle" class="text">tail = newNode
+newNode-&gt;next = newNode</text>
+  <path class="arrow" d="M350 595 L210 680" />
+  <path class="arrow" d="M210 760 L230 860 L200 860 L200 300 L150 270" />
+
+  <!-- False branch -->
+  <rect x="420" y="680" width="360" height="100" class="box" />
+  <text x="600" y="715" text-anchor="middle" class="text">newNode-&gt;next = tail-&gt;next
+tail-&gt;next = newNode
+tail = newNode</text>
+  <path class="arrow" d="M470 640 L520 680" />
+  <path class="arrow" d="M600 780 L200 300" />
+
+  <!-- Loop back to Nhập ID -->
+  <path class="arrow" d="M200 300 L200 240 L200 220" />
+
+</svg>
