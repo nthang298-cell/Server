@@ -1,0 +1,24 @@
+STT,Tên cột,Ý nghĩa,Ví dụ,Giải thích
+1,Date,Ngày quan sát,2008-12-01,Ngày ghi nhận dữ liệu thời tiết
+2,MinTemp,Nhiệt độ thấp nhất (°C),13.4,Nhiệt độ tối thiểu trong ngày
+3,MaxTemp,Nhiệt độ cao nhất (°C),22.9,Nhiệt độ tối đa trong ngày
+4,Rainfall,Lượng mưa (mm),0.6,Nếu >0 thì có mưa
+5,Evaporation,Lượng bốc hơi,,Lượng nước bay hơi trong ngày
+6,Sunshine,Số giờ nắng,,Số giờ có ánh nắng mặt trời
+7,WindGustDir,Hướng gió giật mạnh nhất,W,W = Tây; NW = Tây Bắc; N = Bắc
+8,WindGustSpeed,Tốc độ gió giật mạnh nhất (km/h),44.0,Gió mạnh nhất trong ngày
+9,WindDir9am,Hướng gió lúc 9h sáng,W,Hướng gió buổi sáng
+10,WindDir3pm,Hướng gió lúc 3h chiều,WNW,Hướng gió buổi chiều
+11,WindSpeed9am,Tốc độ gió lúc 9h sáng (km/h),20.0,Tốc độ gió buổi sáng
+12,WindSpeed3pm,Tốc độ gió lúc 3h chiều (km/h),24.0,Tốc độ gió buổi chiều
+13,Humidity9am,Độ ẩm lúc 9h sáng (%),71.0,Độ ẩm buổi sáng
+14,Humidity3pm,Độ ẩm lúc 3h chiều (%),22.0,Độ ẩm buổi chiều
+15,Pressure9am,Áp suất lúc 9h sáng (hPa),1007.7,Áp suất khí quyển buổi sáng
+16,Pressure3pm,Áp suất lúc 3h chiều (hPa),1007.1,Áp suất khí quyển buổi chiều
+17,Cloud9am,Mây lúc 9h sáng,8.0,Mức độ mây sáng
+18,Cloud3pm,Mây lúc 3h chiều,,Mức độ mây chiều
+19,Temp9am,Nhiệt độ lúc 9h sáng (°C),16.9,Nhiệt độ buổi sáng
+20,Temp3pm,Nhiệt độ lúc 3h chiều (°C),21.8,Nhiệt độ buổi chiều
+21,RainToday,Trạng thái mưa trong ngày,No,No = không mưa; Yes = có mưa
+22,RainTomorrow,Trạng thái mưa ngày mai,No,No = ngày mai không mưa; Yes = ngày mai có mưa
+23,Example,Giải thích nhanh,NW = Tây Bắc,Đây là hướng gió từ phía Tây Bắc

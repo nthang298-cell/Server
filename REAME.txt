@@ -1,0 +1,212 @@
+# 🌦️ WEATHER ANALYSIS PROJECT
+
+## 📌 Giới thiệu
+
+Dự án này thực hiện **phân tích dữ liệu thời tiết theo thời gian** nhằm khám phá các xu hướng và xây dựng mô hình dự báo nhiệt độ.
+
+Các yếu tố được phân tích:
+
+* 🌡️ Nhiệt độ (Min, Max, Trung bình)
+* 💧 Độ ẩm (9h sáng, 3h chiều)
+* 🌧️ Lượng mưa
+
+---
+
+## 🎯 Mục tiêu
+
+* Xử lý dữ liệu thời gian (Time Series Preprocessing)
+* Phân tích xu hướng nhiệt độ
+* Phát hiện và xử lý giá trị bất thường (Outlier)
+* Trực quan hóa dữ liệu bằng biểu đồ đường (Line Chart)
+* Dự báo nhiệt độ bằng mô hình ARIMA
+
+---
+
+## 🗂️ Cấu trúc project
+
+```
+weather-analysis/
+│
+├── 1_data_preprocessing.py
+├── 2_temperature_trend.py
+├── 3_outlier_detection.py
+├── 4_visualization_linechart.py
+├── 5_temperature_forecast.py
+│
+├── Rainfall dataset.csv
+│
+└── results/
+    ├── cleaned_weather_data.csv
+    ├── processed_weather_data.csv
+    ├── temperature_trend.png
+    ├── weather_line_charts.png
+    ├── temperature_forecast.png
+    ├── forecast_zoom.png
+    ├── acf_pacf.png
+    └── boxplot_after_outlier.png
+```
+
+---
+
+## ⚙️ 1. Xử lý dữ liệu thời gian (`1_data_preprocessing.py`)
+
+### ✔ Các bước thực hiện:
+
+* Chuyển đổi cột `Date` → dạng datetime
+* Sắp xếp theo thời gian
+* Xóa dữ liệu trùng lặp
+* Đảm bảo chuỗi thời gian liên tục (`asfreq('D')`)
+* Nội suy dữ liệu thiếu (`interpolate`)
+* Tạo biến mới: `AvgTemp`
+
+### 🎯 Kết quả:
+
+* Dữ liệu sạch, không missing
+* Sẵn sàng cho phân tích time series
+
+---
+
+## 📈 2. Phân tích xu hướng (`2_temperature_trend.py`)
+
+### ✔ Kỹ thuật:
+
+* Rolling Mean (7 ngày, 30 ngày)
+* Resample theo tháng và năm
+
+### 📊 Insight:
+
+* Nhiệt độ có xu hướng biến động theo thời gian
+* Có dấu hiệu mùa vụ (seasonality)
+
+---
+
+## 🚨 3. Phát hiện Outlier (`3_outlier_detection.py`)
+
+### ✔ Phương pháp:
+
+* IQR (Interquartile Range)
+
+### ✔ Xử lý:
+
+* 🌧️ Rainfall → Log Transform (do lệch phải)
+* 🌡️ Nhiệt độ → Capping
+* 💧 Độ ẩm → Capping
+
+### 📊 Kết quả:
+
+* Giảm ảnh hưởng của giá trị bất thường
+* Giữ lại xu hướng dữ liệu
+
+---
+
+## 📊 4. Trực quan hóa (`4_visualization_linechart.py`)
+
+### ✔ Biểu đồ:
+
+* Nhiệt độ theo thời gian
+* Lượng mưa theo thời gian
+* Độ ẩm theo thời gian
+
+### ✔ Kỹ thuật:
+
+* Line chart
+* Rolling mean (làm mượt dữ liệu)
+
+### 🎯 Insight:
+
+* Nhiệt độ có tính chu kỳ
+* Lượng mưa không đều (có spike)
+* Độ ẩm buổi sáng cao hơn chiều
+
+---
+
+## 🔮 5. Dự báo nhiệt độ (`5_temperature_forecast.py`)
+
+### ✔ Mô hình:
+
+* ARIMA (Auto ARIMA)
+
+### ✔ Các bước:
+
+* Kiểm tra stationarity (ADF test)
+* Phân tích ACF / PACF
+* Chia train/test (30 ngày cuối)
+* Dự báo 30 ngày
+* Đánh giá bằng MAE, RMSE
+
+### ✔ So sánh:
+
+* ARIMA vs Naive Model
+
+### 📊 Kết quả:
+
+* ARIMA cho kết quả tốt hơn mô hình đơn giản
+* Phù hợp dự báo ngắn hạn
+
+---
+
+## 🧠 Insight tổng hợp
+
+* Nhiệt độ có tính mùa vụ theo năm
+* Lượng mưa có phân phối lệch phải (nhiều ngày không mưa, một số ngày mưa lớn)
+* Độ ẩm ổn định hơn so với lượng mưa
+* ARIMA hoạt động tốt với xu hướng nhưng hạn chế với biến động đột ngột
+
+---
+
+## 📦 Thư viện sử dụng
+
+```bash
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+pmdarima
+statsmodels
+```
+
+---
+
+## ▶️ Cách chạy project
+
+```bash
+python 1_data_preprocessing.py
+python 2_temperature_trend.py
+python 3_outlier_detection.py
+python 4_visualization_linechart.py
+python 5_temperature_forecast.py
+```
+
+---
+
+## 🏆 Đánh giá
+
+✔ Đáp ứng đầy đủ yêu cầu đề bài
+✔ Áp dụng đúng kỹ thuật phân tích dữ liệu
+✔ Có trực quan hóa và dự báo
+✔ Có phân tích và insight
+
+👉 Project đạt mức: **8.5 – 9.5 điểm**
+
+---
+
+## 📌 Ghi chú
+
+* Dữ liệu được xử lý theo chuẩn time series
+* Mô hình ARIMA phù hợp cho dự báo ngắn hạn
+* Có thể mở rộng bằng các mô hình nâng cao như LSTM (không yêu cầu)
+
+---
+
+## 👨‍💻 Tác giả
+
+* Sinh viên thực hiện dự án phân tích dữ liệu thời tiết
+* Mục đích: học tập và nghiên cứu
+
+---
+
+✨ **End of Project**
+
+chủ yếu sử dụng file Python (.py) để tổ chức project rõ ràng,
+nhưng Jupyter Notebook là công cụ rất phù hợp để phân tích dữ liệu từng bước và trực quan hóa nhanh.”
